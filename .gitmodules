@@ -1,0 +1,3 @@
+[submodule "eindopdracht"]
+	path = eindopdracht
+	url = git@github.com:maartenpaauw/nummering.git
