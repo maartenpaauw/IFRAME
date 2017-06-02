@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <quote>
-                    <h2>{{ title }}</h2>
-                    <p>A wonderful day!</p>
+                    <h2 slot="title">{{ title }}</h2>
+                    <p slot="content">A wonderful day!</p>
                 </quote>
             </div>
         </div>
