@@ -7,9 +7,11 @@
                 <button @click="selected = 'new'">New</button>
                 <hr>
                 <p>{{ selected }}</p>
-                <component :is="selected">
-                    <p>Default content</p>
-                </component>
+                <keep-alive>
+                    <component :is="selected">
+                        <p>Default content</p>
+                    </component>
+                </keep-alive>
                 <!--<quote>-->
                     <!--<h2 slot="title">{{ title }}</h2>-->
                     <!--<p>A wonderful day!</p>-->
