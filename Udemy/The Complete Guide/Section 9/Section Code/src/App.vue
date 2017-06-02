@@ -4,7 +4,8 @@
             <div class="col-xs-12">
                 <quote>
                     <h2 slot="title">{{ title }}</h2>
-                    <p slot="content">A wonderful day!</p>
+                    <p>A wonderful day!</p>
+                    <p>Also a wonderful day!</p>
                 </quote>
             </div>
         </div>
