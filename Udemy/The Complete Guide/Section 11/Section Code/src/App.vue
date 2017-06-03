@@ -19,7 +19,7 @@
                                 type="password"
                                 id="password"
                                 class="form-control"
-                                v-model="user.password">
+                                v-model.lazy="user.password">
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
