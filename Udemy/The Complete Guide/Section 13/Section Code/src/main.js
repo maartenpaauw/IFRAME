@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.filter('lowercase');
+Vue.filter('lowercase', (value) => {
+  return value.toLowerCase();
+});
 
 new Vue({
   el: '#app',
