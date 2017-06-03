@@ -1,10 +1,12 @@
 <template>
     <div class="container">
-    
+        <quote-grid :quotes="quotes"></quote-grid>
     </div>
 </template>
 
 <script>
+    import QuoteGrid from './components/QuoteGrid.vue';
+
     export default {
         data () {
             return {
@@ -13,6 +15,9 @@
                 ],
                 maxQuotes: 10
             }
+        },
+        components: {
+            QuoteGrid
         }
     }
 </script>
