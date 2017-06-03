@@ -19,13 +19,12 @@
 
 <script>
     import List from './List.vue';
+    import { fruitMixin } from './fruit.mixin'
 
     export default {
         data () {
             return {
-                text: 'Hello There!',
-                fruits: ['Apple', 'Banana', 'Mango', 'Melon'],
-                filterText: ''
+                text: 'Hello There!'
             }
         },
         filters: {
@@ -33,16 +32,10 @@
                 return value.toUpperCase();
             }
         },
-        computed: {
-            filteredFruits () {
-                return this.fruits.filter((element) => {
-                    return element.match(this.filterText);
-                });
-            }
-        },
         components: {
             List
-        }
+        },
+        mixins: [fruitMixin]
     }
 </script>
 
