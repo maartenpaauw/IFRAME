@@ -11,7 +11,8 @@
                                 type="text"
                                 id="email"
                                 class="form-control"
-                                v-model="user.email">
+                                :value="user.email"
+                                @input="user.email = $event.target.value">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
