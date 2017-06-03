@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <app-header></app-header>
+        <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
         <new-quote @quoteAdded="newQuote"></new-quote>
         <quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></quote-grid>
 
@@ -35,6 +35,11 @@
         },
         methods: {
             newQuote (quote) {
+                if (this.quotes.length >= this.maxQuotes)
+                {
+                    return alert('Please delete a quote first.')
+                }
+
                 this.quotes.push(quote);
             },
             deleteQuote (index) {
