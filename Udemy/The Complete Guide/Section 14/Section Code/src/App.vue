@@ -11,6 +11,11 @@
                 <hr>
                 <button class="btn btn-primary" @click="show = !show">Show alert</button>
                 <hr>
+                <transition :name="alertAnimation" mode="out-in">
+                    <div class="alert alert-info" v-if="show" key="info">This is an alert.</div>
+                    <div class="alert alert-warning" v-if="!show" key="warning">This is an alert.</div>
+                </transition>
+
                 <transition :name="alertAnimation">
                     <div class="alert alert-info" v-show="show">This is an alert.</div>
                 </transition>
@@ -70,7 +75,7 @@
 
     .slide-leave-active {
         animation: slide-out 1s ease-out forwards;
-        transition: opacity 3s;
+        transition: opacity 1s;
         opacity: 0;
     }
 
