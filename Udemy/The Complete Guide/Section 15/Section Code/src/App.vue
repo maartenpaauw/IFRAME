@@ -5,26 +5,20 @@
                 <h1>Http</h1>
                 <div class="form-group">
                     <label>Username</label>
-                    <input class="form-control" type="text" v-model="user.username" />
+                    <input class="form-control" type="text" v-model="user.username">
                 </div>
-
                 <div class="form-group">
                     <label>Mail</label>
-                    <input class="form-control" type="email" v-model="user.email" />
+                    <input class="form-control" type="text" v-model="user.email">
                 </div>
-
                 <button class="btn btn-primary" @click="submit">Submit</button>
-
                 <hr>
-
-                <button class="btn btn-primary" @click="fetchData">
-                    Get data
-                </button>
-
-                <br> <br>
-
+                <input class="form-control" type="text" v-model="node">
+                <br><br>
+                <button class="btn btn-primary" @click="fetchData">Get Data</button>
+                <br><br>
                 <ul class="list-group">
-                    <li class="list-group-item" v-for="user in users">{{ user.username }} - {{ user.email }}</li>
+                    <li class="list-group-item" v-for="u in users">{{ u.username }} - {{ u.email }}</li>
                 </ul>
             </div>
         </div>
@@ -33,49 +27,55 @@
 
 <script>
     export default {
-        data () {
+        data() {
             return {
                 user: {
                     username: '',
                     email: ''
                 },
                 users: [],
-                resource: {}
-            }
+                resource: {},
+                node: 'data'
+            };
         },
         methods: {
-            submit () {
+            submit() {
 //                this.$http.post('data.json', this.user)
-//                    .then(response => {
-//                        console.log(response);
-//                        this.fetchData
-//                    }, error => {
-//                        console.log(error);
-//                    })
-//                ;
+//                        .then(response => {
+//                            console.log(response);
+//                        }, error => {
+//                            console.log(error);
+//                        });
 //                this.resource.save({}, this.user);
                 this.resource.saveAlt(this.user);
             },
-            fetchData () {
-                this.$http.get('data.json')
+            fetchData() {
+//                this.$http.get('data.json')
+//                        .then(response => {
+//                            return response.json();
+//                        })
+//                        .then(data => {
+//                            const resultArray = [];
+//                            for (let key in data) {
+//                                resultArray.push(data[key]);
+//                            }
+//                            this.users = resultArray;
+//                        });
+                this.resource.getData({node: this.node})
                     .then(response => {
                         return response.json();
                     })
                     .then(data => {
                         this.users = data;
-                    })
-                ;
+                    });
             }
         },
-        created () {
+        created() {
             const customActions = {
-                saveAlt: {
-                    method: 'POST',
-                    url: 'alternative.json'
-                }
+                saveAlt: {method: 'POST', url: 'alternative.json'},
+                getData: {method: 'GET'}
             };
-
-            this.resource = this.$resource('data.json', {}, customActions);
+            this.resource = this.$resource('{node}.json', {}, customActions);
         }
     }
 </script>
