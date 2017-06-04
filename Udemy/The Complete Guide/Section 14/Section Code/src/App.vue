@@ -27,6 +27,25 @@
                 <transition appear="appear" enter-active-class="animated bounce" leave-active-class="animated shake">
                     <div class="alert alert-info" v-show="show">This is an alert.</div>
                 </transition>
+
+                <hr>
+
+                <button class="btn btn-primary" @click="load = !load">
+                    Load / Remove element
+                </button>
+
+                <hr>
+
+                <transition @before-enter="beforeEnter"
+                            @enter="enter"
+                            @after-enter="afterEnter"
+                            @enter-cancelled="enterCancelled"
+                            @before-leave="beforeLeave"
+                            @leave="leave"
+                            @after-leave="afterLeave"
+                            @leave-cancelled="leaveCancelled">
+                    <div style="width: 100px; height: 100px; background-color: lightgreen;" v-if="load"></div>
+                </transition>
             </div>
         </div>
     </div>
@@ -36,8 +55,37 @@
     export default {
         data() {
             return {
-                show: true,
+                show: false,
+                load: true,
                 alertAnimation: 'fade'
+            }
+        },
+        methods: {
+            beforeEnter (el) {
+                console.log('Before enter');
+            },
+            enter (el, done) {
+                console.log('Enter');
+                done();
+            },
+            afterEnter (el) {
+                console.log('After enter');
+            },
+            enterCancelled (el) {
+                console.log('Enter cancelled');
+            },
+            beforeLeave (el) {
+                console.log('Before leave');
+            },
+            leave (el, done) {
+                console.log('Leave');
+                done();
+            },
+            afterLeave (el) {
+                console.log('After leave');
+            },
+            leaveCancelled (el) {
+                console.log('Leave cancelled');
             }
         }
     }
