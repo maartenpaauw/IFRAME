@@ -8,7 +8,7 @@
                 <br>
                 <br>
                 <br>
-                <transition>
+                <transition name="fade">
                     <div class="alert alert-info" v-if="show">This is an alert.</div>
                 </transition>
             </div>
@@ -27,5 +27,19 @@
 </script>
 
 <style>
+    .fade-enter {
 
+    }
+
+    .fade-enter-active {
+
+    }
+
+    .fade-leave {
+
+    }
+
+    .fade-leave-active {
+
+    }
 </style>
